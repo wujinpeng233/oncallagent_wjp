@@ -8,4 +8,4 @@ class RagAnswer(BaseModel):
     citations:list[dict]
 
 class DocumentIndexRequest(BaseModel):
-    file_path: str =Field(min_length=1,max_length=255)
+    file_name: str =Field(min_length=1,max_length=255)
