@@ -1,0 +1,27 @@
+{
+  "active_wal_number": 7,
+  "current_seq": 11,
+  "index_specs": {
+    "vector": {
+      "build_params": {},
+      "field_name": "vector",
+      "index_type": "AUTOINDEX",
+      "metric_type": "COSINE",
+      "search_params": {}
+    }
+  },
+  "manifest_format_version": 2,
+  "partitions": {
+    "_default": {
+      "data_files": [
+        "data/data_000001_000008.parquet",
+        "data/data_000009_000010.parquet"
+      ],
+      "delta_files": [
+        "delta/delta_000011_000011.parquet"
+      ]
+    }
+  },
+  "schema_version": 1,
+  "version": 7
+}
