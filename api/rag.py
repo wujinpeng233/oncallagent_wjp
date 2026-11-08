@@ -70,7 +70,7 @@ async def upload_document(file: UploadFile = File(...)):
 @router.post("/documents/reindex")
 def reindex_document(data: DocumentIndexRequest):
     knowledge_dir = (
-        Path(data.file_path).resolve().parent.parent / "knowledge"
+        Path(__file__).resolve().parent.parent / "knowledge"
     ).resolve()
 
     file_name = data.file_name
