@@ -40,8 +40,11 @@ if (-not $ready) {
 Write-Host "      MySQL is ready" -ForegroundColor Green
 
 # 3. Start FastAPI in foreground (Ctrl+C to stop)
+# 注意：不使用 --reload。milvus-lite 的本地数据库文件是单进程独占锁，
+# --reload 在 Windows 下会 fork 出多个进程，造成对 data/oncall_agent.db
+# 的锁竞争，进而导致 reindex 等写库接口报 ConnectionConfigException。
 Write-Host "[3/3] Starting FastAPI on port $appPort ..."
-& $python -m uvicorn main:app --reload --host 127.0.0.1 --port $appPort
+& $python -m uvicorn main:app --host 127.0.0.1 --port $appPort
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[ERROR] Uvicorn exited with code $LASTEXITCODE" -ForegroundColor Red
     exit $LASTEXITCODE

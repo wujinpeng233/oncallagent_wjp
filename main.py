@@ -2,11 +2,14 @@ from fastapi import FastAPI
 from api.messages import router as messages_router
 from api.sessions import router as sessions_router
 from api.rag import router as rag_router
+from api.tools import router as tools_router
 
 app = FastAPI(title="Oncall Agent")
 app.include_router(sessions_router)
 app.include_router(rag_router)
 app.include_router(messages_router)
+app.include_router(tools_router)
+
 @app.get("/")
 def read_root():
     return{"message":"Hello World"}
